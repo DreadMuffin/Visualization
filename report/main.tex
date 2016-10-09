@@ -43,9 +43,9 @@ We have decided to work with the boardgame Settlers of Catan. The idea is to
 visualize the effects of starting choices on the outcome of the game. It is a
 game about managing odds and hedging your bets, so frequent players will be
 interested in knowing what types of starting locations that gives a high
-chance of winning. 
+probability of winning.
 
-There have not been much work done on the topic but we found one analysis by a 
+There have not been much work done on the topic, but we found one analysis by a
 Peter Keep
 \footnote{https://developingcatan.files.wordpress.com/2011/02/settlers-of-catan-analysis.pdf}.
 The quality of the analysis is debatable and he did not do a great job
@@ -56,18 +56,26 @@ be stunned by our genius. All hail the conquerors of the Settler statistics.
 
 Settlers of Catan is a game where you and a number of other players settle
 an island. During the course of the game you acquire resources, build
-improvements and acquire points. The first to 10 points wins the game. 
+improvements and acquire points. The first to 10 points wins the game.
 
 For our project it is important to know that a settlement is located next
 to 3 resource tiles with a number tile on top. Whenever the dice outcome is
 the same as a number of a tile all players next to it receive a resource
-token. Settlements can also be located next to the sea where there are habors
+token. Settlements can also be located next to the sea where there are harbors
 that can be used to trade resources.
 
 
 \section{Task and dataset}
-The target audience of the project is intermediate Settlers of Catan players, who wants to get better at the game by getting a deeper understanding of how to place the two starting towns in order to maximize the chance to win. In Settlers, how you choose to place the first two towns has a large impact on how the game plays out in you're favor.
-The dataset \footnote{https://www.kaggle.com/lumins/settlers-of-catan-games} consist of data over 50 played games, each game has 4 lines that consist of starting position, points gained, placements of starting towns, total resource gains and losses from production, robber cards and trade.
+The target audience of the project is intermediate Settlers of Catan players,
+who wants to get better at the game by getting a deeper understanding of how to
+place the two starting towns in order to maximize the chance to win. In Settlers,
+how you choose to place the first two settlements has a large impact on how the game plays
+out in you're favor, as it will determine how fast you are able to expand to new settlements
+or upgrade to cities.
+The dataset \footnote{https://www.kaggle.com/lumins/settlers-of-catan-games} consist
+of data over 50 played games, each game has 4 lines that consist of starting position,
+points gained, placements of starting towns, total resource gains and losses from production,
+robber cards and trade.
 
 \section{Design}
 
