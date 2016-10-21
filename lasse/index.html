@@ -19,11 +19,11 @@
 <script src="d3.js"></script>
 
 <p class="double">
-<input type="checkbox" onClick="updateData(2,'O')" id="res2o"/>At least 2 Ore<br/>
-<input type="checkbox" onClick="updateData(2,'L')" id="res2l"/>At least 2 Lumber<br/>
-<input type="checkbox" onClick="updateData(2,'C')" id="res2c"/> At least 2 Clay<br/>
-<input type="checkbox" onClick="updateData(2,'S')" id="res2s"/> At least 2 Sheep<br/>
-<input type="checkbox" onClick="updateData(2,'W')" id="res2w"/> At least 2 Wheat<br/>
+<input type="checkbox" class="2res" onClick="change()" name="2res[]" value="O"/>At least 2 Ore<br/>
+<input type="checkbox" class="2res" onClick="change()" name="2res[]" value="L"/>At least 2 Lumber<br/>
+<input type="checkbox" class="2res" onClick="change()" name="2res[]" value="C"/> At least 2 Clay<br/>
+<input type="checkbox" class="2res" onClick="change()" name="2res[]" value="S"/> At least 2 Sheep<br/>
+<input type="checkbox" class="2res" onClick="change()" name="2res[]" value="W"/> At least 2 Wheat<br/>
 
 
 
@@ -51,10 +51,29 @@ var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("settlements.csv",  function(error, csv_data) {
- var ppr = d3.nest()
-  .key(function(d) { return d.res; })
-  .rollup(function(v) { return d3.mean(v, function(d) { return d.points; }); })
+ var checkedValue = null; 
+  var inputElements = document.getElementsByClassName("2res");
+  var values = []
+  for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           values.push(inputElements[i].value);
+      }
+  }
+  var ppr = d3.nest()
+
+  .key(function(d) { if (filter(d.res,values,2)) {return d.res;}} )
+  .rollup(function(v) { 
+    return d3.mean(v, function(d) { return d.points; }); })
   .entries(csv_data);
+
+ 
+  var nppr = ppr.filter(function(obj) {
+    return obj.key != "undefined";
+  });
+  console.log(JSON.stringify(nppr));
+ 
+
+  ppr = nppr;
 
   x.domain(ppr.map(function(d) {return d.key; }));
   y.domain([0, d3.max(ppr, function(d) {return d.values; })]);
@@ -92,39 +111,35 @@ d3.csv("settlements.csv",  function(error, csv_data) {
 d3.select("input").on("change", change);
 
 function change() {
-  updateData()
-}
-
-function filter(string, subString, counts) {
-
-    string += "";
-    subString += "";
-    if (subString.length <= 0) return (string.length + 1);
-
-    var n = 0,
-        pos = 0;
-
-    while (true) {
-        pos = string.indexOf(subString, pos);
-        if (pos >= 0) {
-            ++n;
-            pos += 1;
-        } else break;
-    }
-    return (n >= counts);
-}
-
-function updateData(N,R) {
+  var checkedValue = null; 
+  var inputElements = document.getElementsByClassName("2res");
+  var values = []
+  for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           values.push(inputElements[i].value);
+      }
+  }
   d3.csv("settlements.csv", function(error, csv_data) {
- var ppr = d3.nest()
- .key(function(d) { if (filter(d.res,R,N)) {return d.res;}} )
-  .rollup(function(v) { return d3.mean(v, function(d) { return d.points; }); })
+  var ppr = d3.nest()
+
+  .key(function(d) { if (filter(d.res,values,2)) {return d.res;}} )
+  .rollup(function(v) { 
+    return d3.mean(v, function(d) { return d.points; }); })
   .entries(csv_data);
+
+ 
+  var nppr = ppr.filter(function(obj) {
+    return obj.key != "undefined";
+  });
+  console.log(JSON.stringify(nppr));
+ 
+
+  ppr = nppr;
+
 
   g.selectAll(".bar").remove();
   g.selectAll("x axis").remove();
   g.selectAll("text").remove();
-  console.log(JSON.stringify(ppr));
 
   x.domain(ppr.map(function(d) {return d.key; }));
   y.domain([0, d3.max(ppr, function(d) {return d.values; })]);
@@ -152,6 +167,36 @@ function updateData(N,R) {
    .attr("width", x.rangeBand())
    .attr("height", function(d) {return height - y(d.values)});
   });
+
 }
+
+
+function filter(string, list, counts) {
+
+    var i = 0;
+
+    do {
+      var res = list[i];
+      string += "";
+      res += "";
+      if (list.length <= 0) return (string.length + 1);
+
+      var n = 0,
+          pos = 0;
+
+      while (true) {
+          pos = string.indexOf(res, pos);
+          if (pos >= 0) {
+              ++n;
+              pos += 1;
+          } else break;
+      }
+      if (n < counts) return false;
+      i++;
+    }
+    while (i < list.length);
+    return true;
+}
+
 
 </script>
