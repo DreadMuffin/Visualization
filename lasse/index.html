@@ -14,24 +14,86 @@
   display: none;
 }
 
+
+
 </style>
 <svg width="1600" height="700"></svg>
 <script src="d3.js"></script>
+<br />
+At least
+<select id="C" onChange="change()">
+  <option value="0" selected="selected">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
+clay <br />
 
-<p class="double">
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2O" /> At least 2 Ore<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3O" /> At least 3 Ore<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2L" /> At least 2 Lumber<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3L" /> At least 3 Lumber<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2C" /> At least 2 Clay<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3C" /> At least 3 Clay<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2S" /> At least 2 Sheep<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3S" /> At least 3 Sheep<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2W" /> At least 2 Wheat<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3W" />
- At least 3 Wheat<br/>
+At least
+<select id="L" onChange="change()">
+  <option value="0" selected="selected">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
+lumber <br />
 
+At least
+<select id="O" onChange="change()">
+  <option value="0" selected="selected">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
+ore <br />
 
+At least
+<select id="S" onChange="change()">
+  <option value="0" selected="selected">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
+sheep <br />
+
+At least
+<select id="W" onChange="change()">
+  <option value="0" selected="selected">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
+wheat <br />
+
+At least
+<select id="H" onChange="change()">
+  <option value="0" selected="selected">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
+harbors <br />
+
+<input id="D" type="checkbox" class="D" onClick="change()" name="D" value=1 />
+Next to desert<br/>
 
 <script>
 
@@ -57,17 +119,9 @@ var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("settlements.csv",  function(error, csv_data) {
-  var checkedValue = null; 
-  var inputElements = document.getElementsByClassName("res");
-  var values = []
-  for(var i=0; inputElements[i]; ++i){
-      if(inputElements[i].checked){
-           values.push(inputElements[i].value);
-      }
-  }
   var ppr = d3.nest()
 
-  .key(function(d) { if (filter(d.res,values)) {return d.res;}} )
+  .key(function(d) { if (filterRes(d.res)) {return d.res;}} )
   .rollup(function(v) { 
     return d3.mean(v, function(d) { return d.points; }); })
   .entries(csv_data);
@@ -76,7 +130,7 @@ d3.csv("settlements.csv",  function(error, csv_data) {
   var nppr = ppr.filter(function(obj) {
     return obj.key != "undefined";
   });
-  console.log(JSON.stringify(nppr));
+  //console.log(JSON.stringify(nppr));
  
 
   ppr = nppr;
@@ -117,18 +171,10 @@ d3.csv("settlements.csv",  function(error, csv_data) {
 d3.select("input").on("change", change);
 
 function change() {
-  var checkedValue = null; 
-  var inputElements = document.getElementsByClassName("res");
-  var values = []
-  for(var i=0; inputElements[i]; ++i){
-      if(inputElements[i].checked){
-           values.push(inputElements[i].value);
-      }
-  }
   d3.csv("settlements.csv", function(error, csv_data) {
   var ppr = d3.nest()
 
-  .key(function(d) { if (filter(d.res,values)) {return d.res;}} )
+  .key(function(d) { if (filterRes(d.res)) {return d.res;}} )
   .rollup(function(v) { 
     return d3.mean(v, function(d) { return d.points; }); })
   .entries(csv_data);
@@ -137,7 +183,7 @@ function change() {
   var nppr = ppr.filter(function(obj) {
     return obj.key != "undefined";
   });
-  console.log(JSON.stringify(nppr));
+  //console.log(JSON.stringify(nppr));
  
 
   ppr = nppr;
@@ -177,14 +223,19 @@ function change() {
 }
 
 
-function filter(string, list) {
-
+function filterRes(string) {
+    list = ["H","L","O","S","W","C"];
+    if(document.getElementById("D").checked){
+        if (string.indexOf("D") == -1) {
+          return false
+      }
+    }
     var i = 0;
-    if (list.length <= 0) return (string.length + 1);
     do {
-      var combo = list[i];
-      var counts = combo.charAt(0);
-      var res = combo.charAt(1);
+      var res = list[i];
+      var e = document.getElementById(res);
+      var count = parseInt(e.options[e.selectedIndex].value);
+
       string += "";
       res += "";
 
@@ -198,10 +249,10 @@ function filter(string, list) {
               pos += 1;
           } else break;
       }
-      if (n < counts) return false;
+      if (n < count) return false;
       i++;
     }
-    while (i < list.length);
+    while (i < 6);
     return true;
 }
 
