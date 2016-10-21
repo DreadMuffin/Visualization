@@ -19,17 +19,11 @@
 <script src="d3.js"></script>
 
 <p class="double">
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2O" /> At least 2 Ore<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3O" /> At least 3 Ore<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2L" /> At least 2 Lumber<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3L" /> At least 3 Lumber<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2C" /> At least 2 Clay<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3C" /> At least 3 Clay<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2S" /> At least 2 Sheep<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3S" /> At least 3 Sheep<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="2W" /> At least 2 Wheat<br/>
-<input type="checkbox" class="res" onClick="change()" name="res[]" value="3W" />
- At least 3 Wheat<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="5"/>At least 2 Ore<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="6"/>At least 2 Lumber<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="8"/> At least 2 Clay<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="9"/> At least 2 Sheep<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="10"/> At least 2 Wheat<br/>
 
 
 
@@ -57,8 +51,8 @@ var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("settlements.csv",  function(error, csv_data) {
-  var checkedValue = null; 
-  var inputElements = document.getElementsByClassName("res");
+ var checkedValue = null; 
+  var inputElements = document.getElementsByClassName("2dice");
   var values = []
   for(var i=0; inputElements[i]; ++i){
       if(inputElements[i].checked){
@@ -67,7 +61,7 @@ d3.csv("settlements.csv",  function(error, csv_data) {
   }
   var ppr = d3.nest()
 
-  .key(function(d) { if (filter(d.res,values)) {return d.res;}} )
+  .key(function(d) { if (filter(d.dices,values,2)) {return d.dices;}} )
   .rollup(function(v) { 
     return d3.mean(v, function(d) { return d.points; }); })
   .entries(csv_data);
@@ -118,7 +112,7 @@ d3.select("input").on("change", change);
 
 function change() {
   var checkedValue = null; 
-  var inputElements = document.getElementsByClassName("res");
+  var inputElements = document.getElementsByClassName("2dice");
   var values = []
   for(var i=0; inputElements[i]; ++i){
       if(inputElements[i].checked){
@@ -128,7 +122,7 @@ function change() {
   d3.csv("settlements.csv", function(error, csv_data) {
   var ppr = d3.nest()
 
-  .key(function(d) { if (filter(d.res,values)) {return d.res;}} )
+  .key(function(d) { if (filter(d.dices,values,2)) {return d.dices;}} )
   .rollup(function(v) { 
     return d3.mean(v, function(d) { return d.points; }); })
   .entries(csv_data);
@@ -177,22 +171,21 @@ function change() {
 }
 
 
-function filter(string, list) {
+function filter(string, list, counts) {
 
     var i = 0;
-    if (list.length <= 0) return (string.length + 1);
+
     do {
-      var combo = list[i];
-      var counts = combo.charAt(0);
-      var res = combo.charAt(1);
+      var dice = list[i];
       string += "";
-      res += "";
+      dice += "";
+      if (list.length <= 0) return (string.length + 1);
 
       var n = 0,
           pos = 0;
 
       while (true) {
-          pos = string.indexOf(res, pos);
+          pos = string.indexOf(dice, pos);
           if (pos >= 0) {
               ++n;
               pos += 1;
