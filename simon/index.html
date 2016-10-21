@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+
+
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+</style>
+<svg width="1600" height="700"></svg>
+<script src="d3.js"></script>
+
+<script src="index.js"></script>
+<p class="double">
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="2O" /> At least 2 Ore<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="3O" /> At least 3 Ore<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="2L" /> At least 2 Lumber<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="3L" /> At least 3 Lumber<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="2C" /> At least 2 Clay<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="3C" /> At least 3 Clay<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="2S" /> At least 2 Sheep<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="3S" /> At least 3 Sheep<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="2W" /> At least 2 Wheat<br/>
+<input type="checkbox" class="res" onClick="change()" name="res[]" value="3W" />
+ At least 3 Wheat<br/>
+
+
+
+<script>
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 100, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear().range([height,0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .direction('e') // Position the tooltip to the right of a target element
+  .html(function(d) {
+    return "<strong>Average points:</strong> <span style='color:red'>" + Math.round(d.values.value * 100) / 100 + "</span></br> \
+    Datapoints :  <span style='color:red'>" + d.values.datapoints + "</span></br>  \
+    Wins :  <span style='color:red'>" + d.values.wins + "</span></br> \
+    Loses :  <span style='color:red'>" + d.values.loses + "</span></br>"
+  })
+
+function unique(str) {
+  var result = '';
+  for(var i = 0; i < str.length; i++) {
+    if(result.indexOf(str[i]) < 0) {
+      result += str[i];
+    }
+  }
+  return result;
+}
+
+
+
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+g.call(tip);
+
+
+d3.csv("settlements.csv",  function(error, csv_data) {
+  var checkedValue = null;
+  var inputElements = document.getElementsByClassName("res");
+  var values = []
+  for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           values.push(inputElements[i].value);
+      }
+  }
+  var ppr = d3.nest()
+
+  .key(function(d) { if (filter(d.res,values)) {return unique(d.res);}} )
+  .rollup(function(v) {
+    return {
+      wins : v.reduce(function(total,num) { return total + (num.points >= 10 ? 1 : 0);},0),
+      loses : v.reduce(function(total,num) { return total + (num.points >= 10 ? 0 : 1);},0),
+      datapoints : v.length,
+      value : d3.mean(v, function(d) { return d.points; })}; })
+  .entries(csv_data);
+
+
+  var nppr = ppr.filter(function(obj) {
+    return obj.key != "undefined";
+  });
+
+
+  ppr = nppr;
+
+  x.domain(ppr.map(function(d) {return d.key; }));
+  y.domain([0, d3.max(ppr, function(d) {return d.values.value; })]);
+
+  g.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis)
+    .selectAll("text")
+          .style("text-anchor", "end")
+          .attr("x", "-.8em")
+          .attr("y", ".15em")
+          .attr("font-family", "monospace")
+          .attr("font-size", "15px")
+          .attr("transform", "rotate(-65)" );
+  g.append("g")
+   .attr("class", "y axis")
+   .call(yAxis)
+   .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Points");
+  g.selectAll(".bar")
+    .data(ppr)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) {return x(d.key); })
+      .attr("y", function(d) {return y(d.values.value); })
+      .attr("width", x.rangeBand())
+      .attr("height", function(d) {return height - y(d.values.value)});
+
+
+  g.selectAll("rect")
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
+});
+
+d3.select("input").on("change", change);
+
+
+
+function change() {
+  var checkedValue = null;
+  var inputElements = document.getElementsByClassName("res");
+  var values = []
+  for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           values.push(inputElements[i].value);
+      }
+  }
+  d3.csv("settlements.csv", function(error, csv_data) {
+  var ppr = d3.nest()
+
+  .key(function(d) { if (filter(d.res,values)) {return unique(d.res);}} )
+  .rollup(function(v) {
+    return {
+      wins : v.reduce(function(total,num) { return total + (num.points >= 10 ? 1 : 0);},0),
+      loses : v.reduce(function(total,num) { return total + (num.points >= 10 ? 0 : 1);},0),
+      datapoints : v.length,
+      value : d3.mean(v, function(d) { return d.points; })}; })
+  .entries(csv_data);
+
+
+  var nppr = ppr.filter(function(obj) {
+    return obj.key != "undefined";
+  });
+
+
+  ppr = nppr;
+
+
+  g.selectAll(".bar").remove();
+  g.selectAll("x axis").remove();
+  g.selectAll("text").remove();
+
+  x.domain(ppr.map(function(d) {return d.key; }));
+  y.domain([0, d3.max(ppr, function(d) {return d.values.value; })]);
+
+  g.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+  g.append("g")
+   .attr("class", "x axis")
+   .attr("transform", "translate(0," + height + ")")
+   .call(xAxis)
+   .selectAll("text")
+    .style("text-anchor", "end")
+    .attr("x", "-.8em")
+    .attr("y", ".15em")
+    .attr("font-family", "monospace")
+    .attr("font-size", "15px")
+    .attr("transform", "rotate(-65)" );
+  g.selectAll(".bar")
+   .data(ppr)
+   .enter().append("rect")
+   .attr("class", "bar")
+   .attr("x", function(d) {return x(d.key ); })
+   .attr("y", function(d) {return y(d.values.value); })
+   .attr("width", x.rangeBand())
+   .attr("height", function(d) {return height - y(d.values.value)});
+
+  g.selectAll("rect")
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
+  });
+
+}
+
+
+function filter(string, list) {
+
+    var i = 0;
+    if (list.length <= 0) return (string.length + 1);
+    do {
+      var combo = list[i];
+      var counts = combo.charAt(0);
+      var res = combo.charAt(1);
+      string += "";
+      res += "";
+
+      var n = 0,
+          pos = 0;
+
+      while (true) {
+          pos = string.indexOf(res, pos);
+          if (pos >= 0) {
+              ++n;
+              pos += 1;
+          } else break;
+      }
+      if (n < counts) return false;
+      i++;
+    }
+    while (i < list.length);
+    return true;
+}
+
+
+</script>
