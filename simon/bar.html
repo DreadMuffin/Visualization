@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: none;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>
+<svg width="960" height="500"></svg>
+<label><input type="checkbox"> Sort values</label>
+<script src="d3.min.js"></script>
+<script>
+
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height, 0]);
+
+
+
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+d3.csv("catanstats.csv", function(d) {
+  d.rolls = +d.rolls;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+  var keys = Object.keys(data[0]).slice(0,11);
+  var datas = keys.map(function(d){return data.map(function(f){ return parseInt(f[d])})});
+  console.log(datas);
+  var sums = datas.map(function(arr) {return d3.sum(arr)});
+  var datas2 = [];
+  for(i = 0; i < sums.length; i++){
+    datas2.push({number: parseInt(keys[i]) , rolls : sums[i]});
+  }
+  console.log(JSON.stringify(data2));
+  console.log(datas2);
+  // console.log(datas)
+  // var tet = datas.map(function(arr) {return arr.reduce(add,0)})
+  function add(a,b){
+    return a+b;
+  }
+  // console.log(tet)
+
+  x.domain(keys);
+  y.domain([0, d3.max(sums)+200]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+  svg.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Frequency");
+  svg.selectAll(".bar")
+    .data(datas2)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(parseInt(d.number)); })
+      .attr("y", function(d) { console.log(d.rolls) ; return y(d.rolls); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.rolls); });
+  d3.select("input").on("change", change);
+
+  var sortTimeout = setTimeout(function() {
+    d3.select("input").property("checked", true).each(change);
+  }, 2000);
+
+  function change() {
+    clearTimeout(sortTimeout);
+
+    // Copy-on-write since tweens are evaluated after a delay.
+    var x0 = x.domain(datas2.sort(this.checked
+        ? function(a, b) { return b.rolls - a.rolls; }
+        : function(a, b) { return d3.ascending(parseInt(a.number), parseInt(b.number)); })
+        .map(function(d) { return parseInt(d.number); }))
+        .copy();
+
+    svg.selectAll(".bar")
+        .sort(function(a, b) { return x0(a.number) - x0(b.number); });
+
+    var transition = svg.transition().duration(750),
+        delay = function(d, i) { return i * 50; };
+
+    transition.selectAll(".bar")
+        .delay(delay)
+        .attr("x", function(d) { return x0(d.number); });
+
+    transition.select(".x.axis")
+        .call(d3.axisBottom(x))
+      .selectAll("g")
+        .delay(delay);
+  }
+});
+
+</script>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+
+</style>
+<svg width="1600" height="700"></svg>
+<script src="d3.js"></script>
+
+<p class="double">
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="5"/>At least 2 Ore<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="6"/>At least 2 Lumber<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="8"/> At least 2 Clay<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="9"/> At least 2 Sheep<br/>
+<input type="checkbox" class="2dice" onClick="change()" name="2dice[]" value="10"/> At least 2 Wheat<br/>
+
+
+
+<script>
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 100, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear().range([height,0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("settlements.csv",  function(error, csv_data) {
+ var checkedValue = null; 
+  var inputElements = document.getElementsByClassName("2dice");
+  var values = []
+  for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           values.push(inputElements[i].value);
+      }
+  }
+  var ppr = d3.nest()
+
+  .key(function(d) { if (filter(d.dices,values,2)) {return d.dices;}} )
+  .rollup(function(v) { 
+    return d3.mean(v, function(d) { return d.points; }); })
+  .entries(csv_data);
+
+ 
+  var nppr = ppr.filter(function(obj) {
+    return obj.key != "undefined";
+  });
+  console.log(JSON.stringify(nppr));
+ 
+
+  ppr = nppr;
+
+  x.domain(ppr.map(function(d) {return d.key; }));
+  y.domain([0, d3.max(ppr, function(d) {return d.values; })]);
+
+  g.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis)
+    .selectAll("text")  
+          .style("text-anchor", "end")
+          .attr("x", "-.8em")
+          .attr("y", ".15em")
+          .attr("font-family", "monospace")
+          .attr("font-size", "15px")
+          .attr("transform", "rotate(-65)" );
+  g.append("g")
+   .attr("class", "y axis")
+   .call(yAxis)
+   .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Points");
+  g.selectAll(".bar")
+    .data(ppr)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) {return x(d.key); })
+      .attr("y", function(d) {return y(d.values); })
+      .attr("width", x.rangeBand())
+      .attr("height", function(d) {return height - y(d.values)});
+});
+
+d3.select("input").on("change", change);
+
+function change() {
+  var checkedValue = null; 
+  var inputElements = document.getElementsByClassName("2dice");
+  var values = []
+  for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           values.push(inputElements[i].value);
+      }
+  }
+  d3.csv("settlements.csv", function(error, csv_data) {
+  var ppr = d3.nest()
+
+  .key(function(d) { if (filter(d.dices,values,2)) {return d.dices;}} )
+  .rollup(function(v) { 
+    return d3.mean(v, function(d) { return d.points; }); })
+  .entries(csv_data);
+
+ 
+  var nppr = ppr.filter(function(obj) {
+    return obj.key != "undefined";
+  });
+  console.log(JSON.stringify(nppr));
+ 
+
+  ppr = nppr;
+
+
+  g.selectAll(".bar").remove();
+  g.selectAll("x axis").remove();
+  g.selectAll("text").remove();
+
+  x.domain(ppr.map(function(d) {return d.key; }));
+  y.domain([0, d3.max(ppr, function(d) {return d.values; })]);
+  
+  g.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+  g.append("g")
+   .attr("class", "x axis")
+   .attr("transform", "translate(0," + height + ")")
+   .call(xAxis)
+   .selectAll("text")  
+    .style("text-anchor", "end")
+    .attr("x", "-.8em")
+    .attr("y", ".15em")
+    .attr("font-family", "monospace")
+    .attr("font-size", "15px")
+    .attr("transform", "rotate(-65)" );
+  g.selectAll(".bar")
+   .data(ppr)
+   .enter().append("rect")
+   .attr("class", "bar")
+   .attr("x", function(d) {return x(d.key ); })
+   .attr("y", function(d) {return y(d.values); })
+   .attr("width", x.rangeBand())
+   .attr("height", function(d) {return height - y(d.values)});
+  });
+
+}
+
+
+function filter(string, list, counts) {
+
+    var i = 0;
+
+    do {
+      var dice = list[i];
+      string += "";
+      dice += "";
+      if (list.length <= 0) return (string.length + 1);
+
+      var n = 0,
+          pos = 0;
+
+      while (true) {
+          pos = string.indexOf(dice, pos);
+          if (pos >= 0) {
+              ++n;
+              pos += 1;
+          } else break;
+      }
+      if (n < counts) return false;
+      i++;
+    }
+    while (i < list.length);
+    return true;
+}
+
+
+</script>
