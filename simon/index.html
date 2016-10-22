@@ -126,6 +126,16 @@ At least
 </select>
 harbors <br />
 
+
+Settlement
+<select id="SN" onChange="change()">
+  <option value="1"selected="selected">1</option>
+  <option value="2">2</option>
+  <option value="3">Both</option>
+</select>
+<br />
+
+
 <input id="D" type="checkbox" class="D" onClick="change()" name="D" value=1 />
 Next to desert<br/>
 <input id="Group" type="checkbox" class="Group" onClick="change()" name="Group" value=1 />
@@ -184,9 +194,9 @@ g.call(tip);
 d3.csv("settlements.csv",  function(error, csv_data) {
   var ppr = d3.nest()
 
-  .key(function(d) { if (filterRes(d.res)) {
-    return (document.getElementById("Group").checked ? unique(d.res)
-                                                    : d.res);}})
+  .key(function(d) {tmp = getSettlement(d); if (filterRes(tmp)) {
+    return (document.getElementById("Group").checked ? unique(tmp)
+                                                    : tmp);}})
   .rollup(function(v) {
     return {
       wins : v.reduce(function(total,num) { return total + (num.points >= 10 ? 1 : 0);},0),
@@ -243,13 +253,21 @@ d3.csv("settlements.csv",  function(error, csv_data) {
 
 d3.select("input").on("change", change);
 
+function getSettlement(data) {
+  var e = document.getElementById("SN");
+  var count = parseInt(e.options[e.selectedIndex].value);
+  var type = [data.settle1,data.settle2,data.res]
+  return type[count-1];
+}
+
 function change() {
   d3.csv("settlements.csv", function(error, csv_data) {
+  var l = 0;
   var ppr = d3.nest()
 
-  .key(function(d) { if (filterRes(d.res)) {
-    return (document.getElementById("Group").checked ? unique(d.res)
-                                                    : d.res);}})
+  .key(function(d) { tmp = getSettlement(d); if (filterRes(tmp)) {
+    return (document.getElementById("Group").checked ? unique(tmp)
+                                                     : tmp);}})
   .rollup(function(v) {
     return {
       wins : v.reduce(function(total,num) { return total + (num.points >= 10 ? 1 : 0);},0),
@@ -257,7 +275,7 @@ function change() {
       datapoints : v.length,
       value : d3.mean(v, function(d) { return d.points; })}; })
   .entries(csv_data);
-
+  console.log(l);
 
   var nppr = ppr.filter(function(obj) {
     return obj.key != "undefined";
@@ -305,6 +323,7 @@ function change() {
 
 
 }
+
 
 
 function filterRes(string) {
