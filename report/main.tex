@@ -29,7 +29,7 @@
 
 \begin{center}
 \textsc{\Large Visualization}\\[0.5cm]
-\textsc{\large "Midway"-report}\\[0.5cm]
+\textsc{\large Final report}\\[0.5cm]
 \textsc{\large Lasse Ahlbech Madsen, Simon Maibom}\\[0.5cm]
 \vspace{1 cm}
 \end{center}
@@ -65,17 +65,72 @@ token. Settlements can also be located next to the sea where there are harbors
 that can be used to trade resources.
 
 
-\section{Task and dataset}
+\section{Data and Task Abstractions} % BEDRE OVERSKRIFTER
+
+\subsection{Domain Situation}
 
 The target audience of the project is intermediate Settlers of Catan
 players, who wants to get better at the game by getting a deeper understanding
-of how to place the two starting towns in order to maximize the chance
-to win. In Settlers, how you choose to place the first two towns has
-a large impact on whether game plays out in your favor. The dataset
-\footnote{https://www.kaggle.com/lumins/settlers-of-catan-games} consists of
-data over 50 played games, each game has 4 lines that consist of starting
-position, points gained, placements of starting towns, total resource gains
-and losses from production, robber cards and trade.
+of how to place the two starting settlements in order to maximize the chance
+to win.
+
+\subsubsection{Questions}
+
+\begin{itemize}
+  \item "Is it feasible to settle without access to all resources?"
+  \item "Does settling next to a desert always cause a loss?"
+  \item "MORE QUESTIONS?!?!?!"
+\end{itemize}
+
+\subsection{Data and Task Abstractions}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data.png}
+    \caption{Dataset snapshot}
+    \label{fig:data}
+\end{figure}
+
+The dataset\footnote{https://www.kaggle.com/lumins/settlers-of-catan-games}
+consists of data for 50 4-player games. Each game has 4 lines that consist
+of starting position, points gained, placements of starting towns, total
+resource gains and losses from production, robber cards and trade.
+
+A snapshot of the dataset can be seen in figure \ref{fig:data}. We have mostly
+used the data from the settlements and the points. The types of the attributes
+can be seen in table \fig{tab:types}. It is worth nothing that the dices on
+the resources are categorical because comparisons of them in this context is
+meaningless. 
+
+\begin{figure}
+  \centering
+  \begin{tabular}{|l|l|}
+    Data & Type \\ \hline
+    gameNum & Ratio \\ \hline
+    player & Categorical \\ \hline
+    points & Ratio \\ \hline
+    me & Categorical \\ \hline
+    #dice throws & Ratio \\ \hline
+    Settlement:res & Categorical \\ \hline
+    Settlement:dice & Categorical \\ \hline
+    Gains & Ratio\\ \hline
+    Losses & Ratio \\ \hline
+  \end{tabular}
+  \caption{Attribute types}
+  \label{tab:types}
+\end{figure}
+
+
+To win a game of Settlers you need 10 points and there will never be two
+players with 10 or more points at the same time. However it is possible to
+finish the game with 11 or 12 points, but this skews the data without being
+particularly interesting when determining a winner, so we changed all values
+above 10 to just 10.
+
+Generally points are the main indicator of success in the game, so whenever we
+need to analyze the quality of combinations we will measure it against points.
+
+\subsection{Visual encoding}
 
 \section{Design}
 

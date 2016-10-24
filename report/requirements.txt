@@ -1,0 +1,44 @@
+The final report, which is the basis for the oral exam, should be written as a
+research paper of up to 8 pages together with a video. The paper must be
+formatted using the IEEE TVCG template
+(http://junctionpublishing.org/vgtc/Tasks/camera_tvcg.html). The paper should
+include the following:
+
+Abstract: Concise summary of your project.
+
+Introduction: Describe the background and motivation for the work,
+explaining the problem in the context from the particular domain.
+
+Related Work: Describe work aimed at similar problems and work that employs
+similar solutions to yours; in particular, this needs to cover relevant
+published research.
+
+Data and Task Abstractions: Analyze your domain problem according to
+the framework of the book, translating from domain language into abstract
+descriptions of both tasks and data.
+
+Design: Describe your solution idiom, analyze it according to the framework
+of the book, and justify your design choices with respect to alternatives.
+
+Implementation: Describe how you implemented the visualization, specifying
+what other components/libraries/toolkits you have used.
+
+Usage Scenario(s): Walk through how your interface succeeds (or acknowledge
+how it falls short) in solving the intended problem, illustrated with multiple
+screenshots of your visualization system in action.
+
+Discussion and Future Work: Reflect on your approach, discussing strengths
+and limitations, and summarize lessons learned: what do you know now that
+you didn't when you started, that you would do differently in future work on
+visualization.
+
+Bibliography: List references consistently (using the IEEE reference format
+described in the paper template) for all published work that you cite; it is
+not enough to just give URL's.
+
+The accompanying video can be up to 3 minutes long and should demonstrate
+the visualization, for example as a walk-through of the usage scenario. You
+are strongly encouraged to encode video as MP4 using the H.264 codec. Most
+video editing software (try iMovie, Adobe Premiere, Camtasia, or Final Cut
+Pro) provides an exporting option to MP4/H.264. If you prefer to use free
+software, x264 (Links to an external site.) can encode any video into H.264.
