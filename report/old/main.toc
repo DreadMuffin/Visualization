@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.1}About the game}{1}
+\contentsline {section}{\numberline {2}Related work}{1}
+\contentsline {section}{\numberline {3}Data and Task Abstractions}{1}
+\contentsline {subsection}{\numberline {3.1}Domain Situation}{1}
+\contentsline {subsubsection}{\numberline {3.1.1}Questions}{2}
+\contentsline {subsection}{\numberline {3.2}Data and Task Abstractions}{2}
+\contentsline {subsection}{\numberline {3.3}Visual encoding}{4}
+\contentsline {section}{\numberline {4}Design}{4}
+\contentsline {subsection}{\numberline {4.1}Illustration}{4}
+\contentsline {subsection}{\numberline {4.2}Scenario of use}{5}
+\contentsline {section}{\numberline {5}Implementation}{5}
