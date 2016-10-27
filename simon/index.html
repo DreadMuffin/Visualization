@@ -270,9 +270,9 @@ d3.csv("settlements.csv",  function(error, csv_data) {
 
 
   //Barchart 2
-  var ppr1 = {B : {1 : 0, 2 : 0, 3: 0, 4: 0}, D : {1 : 0, 2 : 0, 3: 0, 4: 0}, H : {1 : 0, 2 : 0, 3: 0, 4: 0},
-  L : {1 : 0, 2 : 0, 3: 0, 4: 0}, C : {1 : 0, 2 : 0, 3: 0, 4: 0}, O : {1 : 0, 2 : 0, 3: 0, 4: 0},
-   W : {1 : 0, 2 : 0, 3: 0, 4: 0}, S : {1 : 0, 2 : 0, 3: 0, 4: 0}};
+  var ppr1 = {B : {1 : 0, 2 : 0, 3: 0, 4: 0, 5:0}, D : {1 : 0, 2 : 0, 3: 0, 4: 0, 5:0}, H : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0},
+  L : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}, C : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}, O : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0},
+   W : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}, S : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}};
   var keys = Object.keys(ppr1).slice(3,8);
   var sum = 0;
   csv_data.forEach(function(d){
@@ -286,7 +286,7 @@ d3.csv("settlements.csv",  function(error, csv_data) {
       }
       for (var i = 0, len = d.settle2.length; i < len; i++) {
         var key = d.settle2[i];
-        var roll = parseInt(d.rolls1[i]);
+        var roll = parseInt(d.rolls2[i]);
         sum++;
         ppr1[key][roll]++;
       }
@@ -294,19 +294,18 @@ d3.csv("settlements.csv",  function(error, csv_data) {
   });
   // x.domain(data.map(function(d) {return d.resource; }));
   x.domain(keys);
-  z.domain([1,2,3,4]);
+  z.domain([1,2,3,4,5]);
 
-  var layers = d3.layout.stack()([1,2,3,4].map(function(c) {
+  var layers = d3.layout.stack()([1,2,3,4,5].map(function(c) {
     return keys.map(function(d) {
       return {x: d, y: ppr1[d][c]/sum, n : c};
     });
   }));
   for (var i = 0; i < 5; i++) {
-    for (var n = 0; n < 4; n++) {
-      layers[n][i]['total'] = (layers[3][i]['y0']+layers[3][i].y);
+    for (var n = 0; n < 5; n++) {
+      layers[n][i]['total'] = (layers[4][i]['y0']+layers[4][i].y);
     }
   }
-  layers[0][4]['q'] = 3
   y.domain([0, d3.max(layers[layers.length - 1], function(d) { return d.y0 + d.y; })]).nice()
   var layer = g1.selectAll(".layer")
       .data(layers)
@@ -430,12 +429,10 @@ function change() {
       .on('mouseout', tip.hide);
 
     //Barchart 2
-
-  var ppr1 = {B : {1 : 0, 2 : 0, 3: 0, 4: 0}, D : {1 : 0, 2 : 0, 3: 0, 4: 0}, H :
-  {1 : 0, 2 : 0, 3: 0, 4: 0}, L : {1 : 0, 2 : 0, 3: 0, 4: 0},
-   C : {1 : 0, 2 : 0, 3: 0, 4: 0}, O : {1 : 0, 2 : 0, 3: 0, 4: 0},
-   W : {1 : 0, 2 : 0, 3: 0, 4: 0}, S : {1 : 0, 2 : 0, 3: 0, 4: 0}};
-  var keys = Object.keys(ppr1).slice(2,7);
+  var ppr1 = {B : {1 : 0, 2 : 0, 3: 0, 4: 0, 5:0}, D : {1 : 0, 2 : 0, 3: 0, 4: 0, 5:0}, H : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0},
+  L : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}, C : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}, O : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0},
+   W : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}, S : {1 : 0, 2 : 0, 3: 0, 4: 0,5:0}};
+  var keys = Object.keys(ppr1).slice(3,8);
   //Data for SVG1c
   var tmp;
   var e = document.getElementById("Settlements");
@@ -444,47 +441,80 @@ function change() {
   var points = parseInt(points.options[points.selectedIndex].value);
   var sum = 0;
   console.log(points);
-  if(count == 2){
+  if(count == 1){
+    csv_data.forEach(function(d){
+      if(d.points >= points){
+        if(filterRes(d.settle1)){
+          var str = filterStr(d.settle1,d.rolls1);
+          for(i = 0; i < str.string.length; i++)          {
+            var key = str.string[i];
+            sum++;
+            var roll = parseInt(str.rolls[i]);
+            ppr1[key][roll]++;
+          }
+        }
+      }
+    })
+  }
+  else if(count == 2){
     csv_data.forEach(function(d){
       if(d.points >= points){
         if(filterRes(d.settle1)){
           for(i = 0; i < d.settle2.length; i++){
             var key = d.settle2[i];
             sum++;
-            var roll = parseInt(d.rolls1[i]);
+            var roll = parseInt(d.rolls2[i]);
             ppr1[key][roll]++;
           }
         }
       }
     })
-  }else{
-    csv_data.forEach(function(d){
-      if(d.points >= points){
-        datapoint = getSettlement(d,"Settlements");
-        if(filterRes(datapoint)){
-          datapoint = filterStr(datapoint);
-          for (var i = 0; i < d.settle1.length; i++) {
-
-            ppr1[datapoint[i]]++;
-          }
-        }var roll = parseInt(d.rolls1[i]);
-        ppr1[key][roll]++;
-
-      }
-    })
   }
-  var sum = keys.reduce(function(s,val) {return ppr1[val]+s},0);
-  var data = [];
-  keys.forEach(function(d){
-    data.push({resource: d, value : ppr1[d]/sum});
-  });
+  else{
+    csv_data.forEach(function(d){
+    point = parseInt(d.points);
+    if(point >= points){
+      if(filterRes(d.res)){
+        for (var i = 0, len = d.settle1.length; i < len; i++) {
+          var key = d.settle1[i];
+          var roll = parseInt(d.rolls1[i]);
+          ppr1[key][roll]++;
+          sum++;
+        }
+        for (var i = 0, len = d.settle2.length; i < len; i++) {
+          var key = d.settle2[i];
+          var roll = parseInt(d.rolls2[i]);
+          sum++;
+          ppr1[key][roll]++;
+        }
+      }
+    }
+  })};
 
-  g1.selectAll(".bar").remove();
+  g1.selectAll(".layer").remove();
   g1.selectAll("x axis").remove();
   g1.selectAll("text").remove();
+  var layers = d3.layout.stack()([1,2,3,4,5].map(function(c) {
+    return keys.map(function(d) {
+      return {x: d, y: ppr1[d][c]/sum, n : c};
+    });
+  }));
 
-  x.domain(data.map(function(d) {return d.resource; }));
-  y.domain([0, d3.max(data, function(d) {return d.value; })]);
+  x.domain(keys);
+  y.domain([0, d3.max(layers[layers.length - 1], function(d) { return d.y0 + d.y; })]).nice()
+  var layer = g1.selectAll(".layer")
+      .data(layers)
+    .enter().append("g")
+      .attr("class", "layer")
+      .style("fill", function(d, i) { return z(i); });
+  layer.selectAll("rect")
+      .data(function(d) { return d; })
+    .enter().append("rect")
+      .attr("x", function(d) { return x(d.x); })
+      .attr("y", function(d) { return y(d.y + d.y0); })
+      .attr("height", function(d) { return y(d.y0) - y(d.y + d.y0); })
+      .attr("width", x.rangeBand() - 1);
+
 
   g1.append("g")
     .attr("class", "y axis")
@@ -500,14 +530,6 @@ function change() {
     .attr("font-family", "monospace")
     .attr("font-size", "15px")
     .attr("transform", "rotate(-65)" );
-  g1.selectAll(".bar")
-   .data(data)
-   .enter().append("rect")
-   .attr("class", "bar")
-   .attr("x", function(d) {return x(d.resource); })
-   .attr("y", function(d) {console.log(d.value); return y(d.value); })
-   .attr("width", x.rangeBand())
-   .attr("height", function(d) {return height - y(d.value)});
 
     g1.selectAll("rect")
       .on('mouseover', tip2.show)
@@ -517,22 +539,28 @@ function change() {
 
 }
 
-function filterStr(string) {
-  list = ["H","L","O","S","W","C"];
-  str = string;
+function filterStr(string,rolls) {
+  var list = ["H","L","O","S","W","C"];
+  var str = string;
+  var rollstr = rolls;
+  var index;
   if(document.getElementById("D").checked){
-      if (string.indexOf("D") != -1) {
-        str = str.replace("D","");
+      index = string.indexOf("D");
+      if (index != -1) {
+        str = str.slice(0,index) + str.slice(index+1);
+        rollstr = rollstr.slice(0,index) + rollstr.slice(index+1);
     }
   }
   list.forEach(function(d){
     var e = document.getElementById(d);
     var count = parseInt(e.options[e.selectedIndex].value);
-    for(i = 0; i < count; i++){
-      str = str.replace(d,"");
+    for(var i = 0; i < count; i++){
+        index = str.indexOf(d);
+        str = str.slice(0,index) + str.slice(index+1);
+        rollstr = rollstr.slice(0,index) + rollstr.slice(index+1);
     }
   });
-  return str;
+  return {string : str, rolls: rollstr};
 }
 
 function filterRes(string) {
