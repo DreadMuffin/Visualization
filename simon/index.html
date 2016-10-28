@@ -153,7 +153,8 @@ var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
 var y = d3.scale.linear().range([height,0]);
-
+//Order: [Blue(Beach),Yellow(Wheat)]
+var ztest = d3.scale.ordinal().range(['#4200e7','#ffdc0b'])
 var z = d3.scale.category10();
 
 var stack = d3.layout.stack();
