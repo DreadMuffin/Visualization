@@ -72,7 +72,7 @@
 %% * evaluation
 %% * system
 %% * theory/model
-\vgtcpapertype{Visulization}
+\vgtcpapertype{application}
 
 %% Paper title.
 \title{Final hand-in for visualization}
@@ -94,12 +94,16 @@
 
 %% Abstract section.
 \abstract{
-  Best abstract in the world
+  Best abstract in the world, it so great you just won't be able to handle it.
+  It does something, no one has ever done before. It utterly destroys its job
+  as an abstract. The world will not be the same when you are done reading
+  this amazing abastract. 
+  Read it and weep bitch.
 } % end of abstract
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
 %% please capitalize first letter and insert punctuation after last keyword
-\keywords{Settlers, Catan, Visualization, Bar charts}
+\keywords{Settlers, Catan, Visualization}
 
 %% ACM Computing Classification System (CCS). 
 %% See <http://www.acm.org/class/1998/> for details.
@@ -184,7 +188,6 @@ data as well.
 
 \begin{itemize}
   \item "What is the optimal settlement location?"
-  \item "Is it best to be in the first spot?"
   \item "Is it feasible to settle without access to all resources?"
   \item "Does settling next to a desert always cause a loss?"
   \item "If my first settlement has wood and ore what resource should I go
@@ -269,13 +272,26 @@ border and whether they are next to a desert.
 
 \subsection{Scenario of use}
 
-% OPDATER SCENARIOS
 \subsubsection{Scenario 1}
-A user wants to know whether it is a good idea to place settlements with no
-access to clay. He skims through the list of visualization possibilities
-and finds the resources tabs and chooses starts with "At most 0" of a
-resource. A bar chart is shown with 5 bars, one for each resource type. He
-finds the clay bar and the task is complete.
+
+”If my first settlement has two lumber and one ore what resources should I go
+for?”
+
+A user is in the middle of a game and has placed his first settlement next to
+two lumber tiles and one ore tile. He wants to know what he should look for
+when placing his second settlement.
+
+He uses the drop downs menu and chooses settlements with at least 2 lumber and
+1 ore. The resulting graph is still rather large, so he tries selecting "group
+duplicate resources". From this he is able to gather that sheep and wheat
+might just be the things to go for. Finally he scrolls to the second graph and
+chooses to show "resource values based on second settlement". 
+
+Sheep has the highest value, but he only wants to compare to people who have
+actually done well, so he sets minimum amount of points to 9. Sheep and Clay
+look equally strong. He checks the colors and decides that while he can go for
+either or both, the value of the number on top of the resource should be more
+important than which one he chooses. 
 
 \section{Implementation}
 
@@ -283,6 +299,38 @@ We implemented the visualization using the D3-library. We did some
 preprocessing in python 
 
 
+
+\section{Discussion and Future Work}
+
+Our visualization is not all we thought it would be. We had hoped that during
+our implementation, through working with the data, we would come up with
+more interesting visualization options, alas we are still using bar charts.
+However the charts do a good job with data exploration, the filters are pretty
+extensive and our second chart makes it pretty clear what you want to settle.
+Our project is a statistical project and simple bar charts do well in this
+field. Another issue is that our implementation does some statistical work,
+so the results would have been more interesting if we instead of 200 data
+points had 20000. We have tried to make up for the lack of data, by always
+writing the amount of data points, so the user will know to take it with a
+grain of salt if there is just 1 case.
+
+We would have liked to spend more time on the design step of the framework,
+but everything got rushed so we had to prioritize getting started over getting
+the design right. While aesthetics is not the priority of this course we would
+have liked to make it all a little more pretty. The default colors in the
+second graph are particularly nasty to behold. 
+
+We never came up with a better way to show the resource combinations on
+the x-axis than their starting letters. We tried to do it with icons or
+colors, but it just became a mess, we also tried coloring the individual
+bars dependent on the resources involved, but if anything, it made it even
+worse. The initial graph is hard to read without filters applied, but this was
+never the main intent of the it. We want the user to filter down the data to
+something smaller, to explore the data by creating scenarios. 
+
+All in all our implementation is not all we had hoped it would be, but we feel
+it does a decent job at visualizing the data by doing the statistical work and
+allowing the user to explore it.
 
 %% if specified like this the section will be committed in review mode
 \acknowledgments{

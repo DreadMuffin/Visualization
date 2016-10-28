@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.10)  26 OCT 2016 15:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.10)  28 OCT 2016 14:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -392,51 +392,51 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 
 Package hyperref Warning: Option `pdftex' has already been used,
-(hyperref)                setting the option has no effect on input line 127.
+(hyperref)                setting the option has no effect on input line 131.
 
 
 Package hyperref Warning: Option `pagebackref' has already been used,
-(hyperref)                setting the option has no effect on input line 127.
+(hyperref)                setting the option has no effect on input line 131.
 
-Package hyperref Info: Option `pageanchor' set `true' on input line 127.
-Package hyperref Info: Option `plainpages' set `false' on input line 127.
-Package hyperref Info: Option `hypertexnames' set `false' on input line 127.
+Package hyperref Info: Option `pageanchor' set `true' on input line 131.
+Package hyperref Info: Option `plainpages' set `false' on input line 131.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 131.
 
 Package hyperref Warning: Option `bookmarks' has already been used,
-(hyperref)                setting the option has no effect on input line 127.
+(hyperref)                setting the option has no effect on input line 131.
 
-Package hyperref Info: Option `bookmarksnumbered' set `false' on input line 127
+Package hyperref Info: Option `bookmarksnumbered' set `false' on input line 131
 .
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 127.
-Package hyperref Info: Option `breaklinks' set `true' on input line 127.
-Package hyperref Info: Option `colorlinks' set `false' on input line 127.
-Package hyperref Info: Option `nesting' set `true' on input line 127.
-Package hyperref Info: Option `linktocpage' set `true' on input line 127.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 131.
+Package hyperref Info: Option `breaklinks' set `true' on input line 131.
+Package hyperref Info: Option `colorlinks' set `false' on input line 131.
+Package hyperref Info: Option `nesting' set `true' on input line 131.
+Package hyperref Info: Option `linktocpage' set `true' on input line 131.
 (./template.aux)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 133.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 137.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 137.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 133.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 137.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
@@ -469,7 +469,7 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 133.
+LaTeX Info: Redefining \microtypecontext on input line 137.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -485,7 +485,7 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 \big@size=\dimen140
 \AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring OFF on input line 133.
+Package hyperref Info: Link coloring OFF on input line 137.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -495,15 +495,15 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count117
 )
-LaTeX Info: Redefining \ref on input line 133.
-LaTeX Info: Redefining \pageref on input line 133.
-LaTeX Info: Redefining \nameref on input line 133.
+LaTeX Info: Redefining \ref on input line 137.
+LaTeX Info: Redefining \pageref on input line 137.
+LaTeX Info: Redefining \nameref on input line 137.
 
 (./template.out) (./template.out)
 \@outlinefile=\write3
 \openout3 = `template.out'.
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 142.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 146.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
@@ -514,7 +514,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 14
-2.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
@@ -524,95 +524,99 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 14
-2.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 14
-2.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 14
-2.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 \abstractwidth=\skip53
 
-<pictures/teaser.jpg, id=52, 702.625pt x 301.125pt>
+<pictures/teaser.jpg, id=56, 702.625pt x 301.125pt>
 File: pictures/teaser.jpg Graphic file (type jpg)
  <use pictures/teaser.jpg>
-Package pdftex.def Info: pictures/teaser.jpg used on input line 142.
+Package pdftex.def Info: pictures/teaser.jpg used on input line 146.
 (pdftex.def)             Requested size: 467.22528pt x 200.2456pt.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 146.
 
-<diamondrule.pdf, id=53, 213.79875pt x 12.045pt>
+<diamondrule.pdf, id=57, 213.79875pt x 12.045pt>
 File: diamondrule.pdf Graphic file (type pdf)
  <use diamondrule.pdf>
-Package pdftex.def Info: diamondrule.pdf used on input line 142.
+Package pdftex.def Info: diamondrule.pdf used on input line 146.
 (pdftex.def)             Requested size: 213.79822pt x 12.04495pt.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <9> not available
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 142.
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 146.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 210.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 213.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 210.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 213.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./pictures/teaser.jpg> <./diamondrule.pdf>]
-<pictures/pic2.png, id=72, 200.75pt x 150.5625pt>
+<pictures/pic2.png, id=76, 200.75pt x 150.5625pt>
 File: pictures/pic2.png Graphic file (type png)
  <use pictures/pic2.png>
-Package pdftex.def Info: pictures/pic2.png used on input line 257.
+Package pdftex.def Info: pictures/pic2.png used on input line 260.
 (pdftex.def)             Requested size: 80.29857pt x 60.22392pt.
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
 
 (./template.bbl) [2 <./pictures/pic2.png>]
-Overfull \hbox (269.5862pt too wide) in paragraph at lines 309--328
+Overfull \hbox (269.5862pt too wide) in paragraph at lines 357--376
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 334.
-[3
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 334.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 382.
+[3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 382.
  (./template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 334.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 334.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 382.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 382.
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: 0936BCCFFEA91FD971C22D1CB9EF03E9;679.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 334.
+(rerunfilecheck)             Checksum: A1E295A4965E99A5D5A81821D941B127;741.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 382.
  ) 
 Here is how much of TeX's memory you used:
- 8406 strings out of 493304
- 127716 string characters out of 6139871
- 245696 words of memory out of 5000000
- 11601 multiletter control sequences out of 15000+600000
- 46709 words of font info for 159 fonts, out of 8000000 for 9000
+ 8418 strings out of 493304
+ 127822 string characters out of 6139871
+ 246943 words of memory out of 5000000
+ 11602 multiletter control sequences out of 15000+600000
+ 47123 words of font info for 166 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  33i,7n,35p,321b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -620,10 +624,10 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on template.pdf (3 pages, 147558 bytes).
+Output written on template.pdf (3 pages, 150726 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 95 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
- 49264 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 113 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
+ 49272 words of extra memory for PDF output out of 51595 (max. 10000000)
 
