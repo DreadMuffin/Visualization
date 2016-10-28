@@ -101,7 +101,7 @@
 %% please capitalize first letter and insert punctuation after last keyword
 \keywords{Settlers, Catan, Visualization, Bar charts}
 
-%% ACM Computing Classification System (CCS). 
+%% ACM Computing Classification System (CCS).
 %% See <http://www.acm.org/class/1998/> for details.
 %% The ``\CCScat'' command takes four arguments.
 
@@ -175,7 +175,7 @@ take rarity of resources fully into account.
 The target audience of the project is intermediate Settlers of Catan
 players, who wants to get better at the game by getting a deeper understanding
 of how to place the two starting settlements in order to maximize the chance
-to win. 
+to win.
 
 Relevant questions these players might ask would either be very concrete
 in-the-moment questions or generally browsing for good combinations and things
@@ -203,7 +203,7 @@ A snapshot of the dataset can be seen in appendix 1. We have mostly
 used the data from the settlements and the points. The types of the attributes
 can be seen in table \ref{tab:types}. It is worth nothing that the dices on
 the resources are categorical because comparisons of them in this context is
-meaningless. 
+meaningless.
 
 \begin{figure}
   \centering
@@ -245,11 +245,11 @@ Based on our data and task abstractions it would seem that the most important
 part is the ability to view probabilities and to search the data for exact
 situations. There are too many possible combinations for pie charts and the
 probabilities do not relate to each other, so we stuck with simple bar
-charts for the main part of our visualization. 
+charts for the main part of our visualization.
 
 What was more important was the filtering of data and we want to ensure that
 any scenario can be created. We imagined doing this just with checkboxes, but
-we modified this for implementation. 
+we modified this for implementation.
 
 \subsection{Illustration}
 \begin{figure}[!h]
@@ -279,11 +279,10 @@ finds the clay bar and the task is complete.
 
 \section{Implementation}
 
-We implemented the visualization using the D3-library. We did some
-preprocessing in python 
-
-
-
+We implemented the visualization using the D3-library. To make data processing easier,
+We used python to transform the settlement columns from a list of a comma separated values seen at fig \ref{tab:data}.
+Into four columns with settlement position in one value and rolls on the specific settlement,
+for both first and second settlement. All data processing were done using javascript.
 %% if specified like this the section will be committed in review mode
 \acknowledgments{
 The authors wish to thank the Kaggle user "Lumin" for sharing his game stats}
