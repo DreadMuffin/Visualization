@@ -259,9 +259,7 @@ we modified this for implementation.
   \centering
   \includegraphics[scale=0.4]{pic2.png}
 \end{figure}
-\newpage
 \noindent
-
 The sketch shows on the left side a bunch of filters that you apply, once the
 user have applied the filters on the right side will show a bunch of graphs
 of game statistics. These graphs include how many points gained relative to
@@ -270,9 +268,14 @@ other relevant statistics. The filters that the user should be able to apply,
 includes which player position, how many of a resource the start settlements
 border and whether they are next to a desert.
 
-\subsection{Scenario of use}
+\section{Implementation}
 
-\subsubsection{Scenario 1}
+We implemented the visualization using the D3-library. We did some
+preprocessing in python 
+
+\section{Scenarios of use}
+
+\subsection{Scenario 1}
 
 ”If my first settlement has two lumber and one ore what resources should I go
 for?”
@@ -289,16 +292,24 @@ chooses to show "resource values based on second settlement".
 
 Sheep has the highest value, but he only wants to compare to people who have
 actually done well, so he sets minimum amount of points to 9. Sheep and Clay
-look equally strong. He checks the colors and decides that while he can go for
-either or both, the value of the number on top of the resource should be more
-important than which one he chooses. 
+look equally strong. He checks the dice values and decides that while he
+can go for either or both, the dice value of the resource should be more
+important than which one he chooses.
 
-\section{Implementation}
+\subsection{Scenario 2}
 
-We implemented the visualization using the D3-library. We did some
-preprocessing in python 
+"Should the desert be avoided at all cost?"
 
+A user wants to know if it is feasible to place a city next to desert if the
+other tiles are good. He ticks "next to desert" and sees 8 bars of data. They
+are fairly spread, but he notices that some have won with it. He scrolls to
+the second graph and sees that ore and wheat are the most valuable resources
+in desert starts. He tweaks the graph and the requires data to be of players
+with more points. He notices that as he increases the number of required
+points wheat drops in value and ore remains the most important resource. He
+also notices that your tiles needs to have good dices on them to be valuable. 
 
+He concludes that good ore tiles can justify starting next to a desert.
 
 \section{Discussion and Future Work}
 

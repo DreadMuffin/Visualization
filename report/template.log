@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.10)  28 OCT 2016 14:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.10)  28 OCT 2016 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -549,7 +549,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 \abstractwidth=\skip53
 
-<pictures/teaser.jpg, id=56, 702.625pt x 301.125pt>
+<pictures/teaser.jpg, id=60, 702.625pt x 301.125pt>
 File: pictures/teaser.jpg Graphic file (type jpg)
  <use pictures/teaser.jpg>
 Package pdftex.def Info: pictures/teaser.jpg used on input line 146.
@@ -557,7 +557,7 @@ Package pdftex.def Info: pictures/teaser.jpg used on input line 146.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 146.
 
-<diamondrule.pdf, id=57, 213.79875pt x 12.045pt>
+<diamondrule.pdf, id=61, 213.79875pt x 12.045pt>
 File: diamondrule.pdf Graphic file (type pdf)
  <use diamondrule.pdf>
 Package pdftex.def Info: diamondrule.pdf used on input line 146.
@@ -584,7 +584,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 
 
  <./pictures/teaser.jpg> <./diamondrule.pdf>]
-<pictures/pic2.png, id=76, 200.75pt x 150.5625pt>
+<pictures/pic2.png, id=80, 200.75pt x 150.5625pt>
 File: pictures/pic2.png Graphic file (type png)
  <use pictures/pic2.png>
 Package pdftex.def Info: pictures/pic2.png used on input line 260.
@@ -597,26 +597,28 @@ Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
 
 (./template.bbl) [2 <./pictures/pic2.png>]
-Overfull \hbox (269.5862pt too wide) in paragraph at lines 357--376
+Overfull \hbox (269.5862pt too wide) in paragraph at lines 368--387
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 382.
-[3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 382.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 393.
+[3
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 393.
  (./template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 382.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 382.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 393.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 393.
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: A1E295A4965E99A5D5A81821D941B127;741.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 382.
+(rerunfilecheck)             Checksum: 3EC81FFADED5541769C212E61060B4DD;782.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 393.
  ) 
 Here is how much of TeX's memory you used:
- 8418 strings out of 493304
- 127822 string characters out of 6139871
- 246943 words of memory out of 5000000
- 11602 multiletter control sequences out of 15000+600000
- 47123 words of font info for 166 fonts, out of 8000000 for 9000
+ 8427 strings out of 493304
+ 127895 string characters out of 6139871
+ 247918 words of memory out of 5000000
+ 11603 multiletter control sequences out of 15000+600000
+ 46319 words of font info for 171 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  33i,7n,35p,321b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -624,10 +626,10 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on template.pdf (3 pages, 150726 bytes).
+Output written on template.pdf (3 pages, 151434 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
- 24 named destinations out of 1000 (max. 500000)
- 49272 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 119 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 47232 words of extra memory for PDF output out of 51595 (max. 10000000)
 
