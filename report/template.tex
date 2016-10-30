@@ -270,13 +270,32 @@ border and whether they are next to a desert.
 
 \section{Implementation}
 
-We implemented the visualization using the D3-library. To make data
-processing easier, We used python to transform the settlement columns from a
-list of a comma separated values seen at fig \ref{tab:data}. Into four columns
-with settlement position in one value and rolls on the specific settlement,
-for both first and second settlement. All data processing were done using
-Javascript.
+We implemented the visualization using the D3-library version 3. To make
+data processing easier, We used python to transform the settlement columns
+from a list of a comma separated values seen at fig \ref{tab:data}. Into
+four columns with settlement position in one value and rolls on the specific
+settlement, for both first and second settlement. All data processing were
+done using javascript.
 
+In our approach to making the visualization, we started out making a simple non
+interactive bar chart using D3 of the first bar chart where we compared starting position to avg amount of points gained.
+The x axis shows which resources the starting settlements had available as a string of each resource starting letter,
+so "OOL" is ore, ore and wood for that given starting position and the y axis is average amount of points for that starting position.
+
+Afterwards the filters were added and the bar chart updating each time a change is made.
+To make it easier to see what each bar represented, we added popout boxes when
+hovering over the bar's to show relevant information, we used the D3 tip library\footnote{https://github.com/Caged/d3-tip}
+to do this.
+
+The last thing we changed was adding the layered bar charts,
+in bar chart 1, it is difficult to read the x axis, to try and solve this we layered
+the bars to visualize each resource of the starting position with colors,
+the size of each layer is based on how many of each resource the starting position has,
+with beach and desert both having same color since they offer no value. With this bar chart
+the size of each layer has no value with the y axis. In the 2. bar chart the size of each
+layer represents the individual value the dice roll of the resource.
+
+Due to the nature of having to learn each time we added new elements to our visualization, the code base became more cluttered and harder for us to add new features as we went along. If we had more time we would have cleaned up our code to make it easier to work in.
 \section{Scenarios of use}
 
 \subsection{Scenario 1}
