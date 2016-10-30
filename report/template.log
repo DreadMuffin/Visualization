@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.10)  30 OCT 2016 17:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.10)  30 OCT 2016 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -549,7 +549,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 147.
 \abstractwidth=\skip53
 
-<pictures/teaser.jpg, id=56, 702.625pt x 301.125pt>
+<pictures/teaser.jpg, id=60, 702.625pt x 301.125pt>
 File: pictures/teaser.jpg Graphic file (type jpg)
  <use pictures/teaser.jpg>
 Package pdftex.def Info: pictures/teaser.jpg used on input line 147.
@@ -557,7 +557,7 @@ Package pdftex.def Info: pictures/teaser.jpg used on input line 147.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 147.
 
-<diamondrule.pdf, id=57, 213.79875pt x 12.045pt>
+<diamondrule.pdf, id=61, 213.79875pt x 12.045pt>
 File: diamondrule.pdf Graphic file (type pdf)
  <use diamondrule.pdf>
 Package pdftex.def Info: diamondrule.pdf used on input line 147.
@@ -584,14 +584,14 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 
 
  <./pictures/teaser.jpg> <./diamondrule.pdf>]
-<pictures/sketch1.png, id=76, 672.5125pt x 386.44376pt>
+<pictures/sketch1.png, id=80, 672.5125pt x 386.44376pt>
 File: pictures/sketch1.png Graphic file (type png)
 
 <use pictures/sketch1.png>
 Package pdftex.def Info: pictures/sketch1.png used on input line 260.
 (pdftex.def)             Requested size: 251.31898pt x 144.41483pt.
 
-<pictures/sketch2.png, id=78, 710.655pt x 324.21124pt>
+<pictures/sketch2.png, id=82, 710.655pt x 324.21124pt>
 File: pictures/sketch2.png Graphic file (type png)
 
 <use pictures/sketch2.png>
@@ -603,79 +603,78 @@ Missing character: There is no ù in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
- <pictures/scen1-1.png, id=82, 208.78pt x 164.615pt>
+ <pictures/scen1-1.png, id=87, 208.78pt x 164.615pt>
 File: pictures/scen1-1.png Graphic file (type png)
 
 <use pictures/scen1-1.png>
-Package pdftex.def Info: pictures/scen1-1.png used on input line 320.
+Package pdftex.def Info: pictures/scen1-1.png used on input line 329.
 (pdftex.def)             Requested size: 125.26895pt x 98.76976pt.
 
-<pictures/scen1-2.png, id=85, 1014.79124pt x 495.8525pt>
+<pictures/scen1-2.png, id=90, 1014.79124pt x 495.8525pt>
 File: pictures/scen1-2.png Graphic file (type png)
 
 <use pictures/scen1-2.png>
-Package pdftex.def Info: pictures/scen1-2.png used on input line 331.
+Package pdftex.def Info: pictures/scen1-2.png used on input line 340.
 (pdftex.def)             Requested size: 251.31898pt x 122.79764pt.
 
-<pictures/scen1-3.png, id=87, 972.63374pt x 539.01375pt>
+<pictures/scen1-3.png, id=92, 972.63374pt x 539.01375pt>
 File: pictures/scen1-3.png Graphic file (type png)
 
 <use pictures/scen1-3.png>
-Package pdftex.def Info: pictures/scen1-3.png used on input line 342.
+Package pdftex.def Info: pictures/scen1-3.png used on input line 351.
 (pdftex.def)             Requested size: 251.31898pt x 139.27667pt.
 
-<pictures/scen1-4.png, id=89, 978.65625pt x 461.725pt>
+<pictures/scen1-4.png, id=94, 978.65625pt x 461.725pt>
 File: pictures/scen1-4.png Graphic file (type png)
 
 <use pictures/scen1-4.png>
-Package pdftex.def Info: pictures/scen1-4.png used on input line 355.
+Package pdftex.def Info: pictures/scen1-4.png used on input line 364.
 (pdftex.def)             Requested size: 251.31898pt x 118.56615pt.
- [2 <./pictures/sketch1.png> <./pictures/sketch2.png> <./pictures/scen1-1.png>]
-
-<pictures/scen2-1.png, id=101, 1006.76125pt x 496.85625pt>
+ [2 <./pictures/sketch1.png> <./pictures/sketch2.png>] <pictures/scen2-1.png, i
+d=109, 1006.76125pt x 496.85625pt>
 File: pictures/scen2-1.png Graphic file (type png)
 
 <use pictures/scen2-1.png>
-Package pdftex.def Info: pictures/scen2-1.png used on input line 370.
+Package pdftex.def Info: pictures/scen2-1.png used on input line 379.
 (pdftex.def)             Requested size: 251.31898pt x 124.0318pt.
 
-<pictures/scen2-2.png, id=103, 956.57375pt x 426.59375pt>
+<pictures/scen2-2.png, id=111, 956.57375pt x 426.59375pt>
 File: pictures/scen2-2.png Graphic file (type png)
 
 <use pictures/scen2-2.png>
-Package pdftex.def Info: pictures/scen2-2.png used on input line 380.
+Package pdftex.def Info: pictures/scen2-2.png used on input line 389.
 (pdftex.def)             Requested size: 251.31898pt x 112.07692pt.
 
-<pictures/scen2-3.png, id=105, 964.60374pt x 439.6425pt>
+<pictures/scen2-3.png, id=113, 964.60374pt x 439.6425pt>
 File: pictures/scen2-3.png Graphic file (type png)
 
 <use pictures/scen2-3.png>
-Package pdftex.def Info: pictures/scen2-3.png used on input line 389.
+Package pdftex.def Info: pictures/scen2-3.png used on input line 398.
 (pdftex.def)             Requested size: 251.31898pt x 114.54585pt.
- [3 <./pictures/scen1-2.png> <./pictures/scen1-3.png> <./pictures/scen1-4.png> 
-<./pictures/scen2-1.png> <./pictures/scen2-2.png> <./pictures/scen2-3.png>] (./
-template.bbl) [4]
-Overfull \hbox (269.5862pt too wide) in paragraph at lines 458--477
+ [3 <./pictures/scen1-1.png> <./pictures/scen1-2.png> <./pictures/scen1-3.png> 
+<./pictures/scen1-4.png> <./pictures/scen2-1.png> <./pictures/scen2-2.png> <./p
+ictures/scen2-3.png>] (./template.bbl) [4]
+Overfull \hbox (269.5862pt too wide) in paragraph at lines 467--486
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 483.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 492.
 [5
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 483.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 492.
  (./template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 483.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 483.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 492.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 492.
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: 20B636C19374CDF1E390859ECEDDA380;722.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 483.
+(rerunfilecheck)             Checksum: 0FD85662F90966D17B1CD8FAD6B177D3;775.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 492.
  ) 
 Here is how much of TeX's memory you used:
- 8515 strings out of 493304
- 129205 string characters out of 6139871
+ 8518 strings out of 493304
+ 129245 string characters out of 6139871
  248363 words of memory out of 5000000
- 11643 multiletter control sequences out of 15000+600000
+ 11644 multiletter control sequences out of 15000+600000
  49496 words of font info for 190 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  33i,8n,35p,321b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -684,10 +683,10 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on template.pdf (5 pages, 505220 bytes).
+Output written on template.pdf (5 pages, 506131 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 49312 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 160 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 49320 words of extra memory for PDF output out of 51595 (max. 10000000)
 
