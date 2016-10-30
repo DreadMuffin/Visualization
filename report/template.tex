@@ -252,21 +252,29 @@ charts for the main part of our visualization.
 
 What was more important was the filtering of data and we want to ensure that
 any scenario can be created. We imagined doing this just with checkboxes, but
-we modified this for implementation.
-
-\subsection{Illustration}
-\begin{figure}[!h]
+we modified this for implementation. We planned to make two rather basic
+graphs and expand on them later.
+\begin{figure}[!ht]
   \centering
-  \includegraphics[scale=0.4]{pic2.png}
+  \includegraphics[width=\linewidth]{sketch1.png}
+  \caption{Sketch of first graph}
+  \label{fig:sketch1}
+\end{figure}
+In figure \ref{fig:sketch1} our first graph can be seen. It is a simple bar
+chart with resource combinations matched to an average point score. There is a
+checkbox and some dropdown menus to filter the results.
+\noindent
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{sketch2.png}
+  \caption{Sketch of second graph}
+  \label{fig:sketch2}
 \end{figure}
 \noindent
-The sketch shows on the left side a bunch of filters that you apply, once the
-user have applied the filters on the right side will show a bunch of graphs
-of game statistics. These graphs include how many points gained relative to
-which number or resource a player had next to the starting settlements and
-other relevant statistics. The filters that the user should be able to apply,
-includes which player position, how many of a resource the start settlements
-border and whether they are next to a desert.
+In figure \ref{fig:sketch2} the second graph can be seen. It shows the value
+of resources based on points gained from games where the resources were
+included. It can filtered to only show results based on one of the
+settlements. 
 
 \section{Implementation}
 
@@ -306,7 +314,7 @@ for?”
 A user is in the middle of a game and has placed his first settlement next to
 two lumber tiles and one ore tile. He wants to know what he should look for
 when placing his second settlement.
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[scale=0.6]{scen1-1.png}
   \caption{Dropdown menu selection}
@@ -317,7 +325,7 @@ He uses the drop downs menu and chooses settlements with at least 2 lumber
 and 1 ore as seen in figure \ref{fig:s11}. The resulting graph is still rather
 large, so he tries selecting "group duplicate resources" as seen in figure
 \ref{fig:s12}.
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{scen1-2.png}
   \caption{Grouped resources for the filter}
@@ -328,7 +336,7 @@ From this he is able to gather that sheep and wheat
 might just be the things to go for. Finally he scrolls to the second graph and
 chooses to show "resource values based on second settlement" as seen in figure
 \ref{fig:s13}.
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{scen1-3.png}
   \caption{Value of resources for second settlement}
@@ -341,7 +349,7 @@ seen in figure \ref{fig:s14}. Sheep and Clay
 look equally strong. He checks the dice values and decides that while he
 can go for either or both, the dice value of the resource should be more
 important than which one he chooses.
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{scen1-4.png}
   \caption{Resource values limited to players with at least 9 points}
@@ -356,7 +364,7 @@ important than which one he chooses.
 A user wants to know if it is feasible to place a city next to desert if the
 other tiles are good. He ticks "next to desert" and sees 8 bars of data as
 seen in figure \ref{fig:s21}. 
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{scen2-1.png}
   \caption{Limit to settlements next to desert}
@@ -366,7 +374,7 @@ seen in figure \ref{fig:s21}.
 They are fairly spread, but he notices that some have won with it. He
 scrolls to the second graph and sees that ore and wheat are the most valuable
 resources in desert starts as seen in figure \ref{fig:s22}. 
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{scen2-2.png}
   \caption{Second graph with desert}
@@ -375,7 +383,7 @@ resources in desert starts as seen in figure \ref{fig:s22}.
 \noindent
 He tweaks the graph and the requires data to be
 of players who have won the game as seen in figure \ref{fig:s23}. 
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{scen2-3.png}
   \caption{Limited to players with 10 points}
