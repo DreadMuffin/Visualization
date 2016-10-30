@@ -71,7 +71,8 @@ d3.csv("catanstats.csv", function(d) {
   for(i = 0; i < sums.length; i++){
     datas2.push({number: parseInt(keys[i]) , rolls : sums[i]});
   }
-  console.log(datas2[2]);
+  console.log(JSON.stringify(data2));
+  console.log(datas2);
   // console.log(datas)
   // var tet = datas.map(function(arr) {return arr.reduce(add,0)})
   function add(a,b){
