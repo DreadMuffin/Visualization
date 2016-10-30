@@ -321,10 +321,10 @@ legend.append("rect")
     .style("fill", z);
 
 legend.append("text")
-    .attr("x", width + 75)
+    .attr("x", width + 25)
     .attr("y", 9)
     .attr("dy", ".35em")
-    .style("text-anchor", "end")
+    .style("text-anchor", "start")
     .text(function(d) { return resourceNames[d]; });
 
   g.selectAll("rect")
@@ -587,10 +587,10 @@ legend.append("rect")
     .style("fill", z);
 
 legend.append("text")
-    .attr("x", width + 75)
+    .attr("x", width + 25)
     .attr("y", 9)
     .attr("dy", ".35em")
-    .style("text-anchor", "end")
+    .style("text-anchor", "start")
     .text(function(d) { return resourceNames[d]; });
 
     g.selectAll("rect")
